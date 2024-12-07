@@ -26,10 +26,12 @@
             border-radius: 20px;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             animation: aparecer 1.5s ease-in-out;
+            cursor: pointer;
         }
 
         /* Estilo del texto */
@@ -38,6 +40,12 @@
             font-weight: bold;
             color: #4a4e69;
             margin: 0;
+        }
+
+        .cuadro p {
+            margin: 10px 0 0;
+            font-size: 1.5rem;
+            color: #6a6a6a;
         }
 
         /* Efecto de animación al aparecer */
@@ -54,8 +62,26 @@
     </style>
 </head>
 <body>
-    <div class="cuadro">
+    <div class="cuadro" id="cuadro">
         <h1>¡Hola Mundo!</h1>
+        <p>Muchas gracias por todo lo que enseñó, profesor!!</p>
     </div>
+
+    <!-- Script para el confeti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        // Seleccionar el cuadro
+        const cuadro = document.getElementById('cuadro');
+
+        // Agregar evento de clic
+        cuadro.addEventListener('click', () => {
+            // Lluvia de confeti
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { x: 0.5, y: 0.5 }
+            });
+        });
+    </script>
 </body>
 </html>
